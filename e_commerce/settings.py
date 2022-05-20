@@ -24,15 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-yq0jigr_1b#1azr=*_s41vl(_fel@&wf*3w#5$1jc+&r8-((vm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-if os.environ.get('DEBUG') == 'TRUE':
-  DEBUG = True
-elif os.environ.get('DEBUG') == 'FALSE':
-  DEBUG = False
-
-
-ALLOWED_HOSTS = []
-
+DEBUG=True
 
 # Application definition
 
@@ -83,6 +75,12 @@ WSGI_APPLICATION = 'e_commerce.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+if os.environ.get('DEBUG') == 'TRUE':
+  DEBUG = True
+elif os.environ.get('DEBUG') == 'FALSE':
+  DEBUG = False
+
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 DATABASES = {
     'default': {
@@ -131,8 +129,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 
-MEDIA_URL = '/images/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # SMTP Configuration (for sending mails)
 

@@ -1,0 +1,24 @@
+{% extends 'accounts/main_dashboard.html'%}
+
+{% load static %}
+
+  {% block content%}
+  {% block title %}Delete Item{% endblock title %}
+
+  <br>
+  <div class="row">
+    <div class="col">
+      <div class="card card-body">
+
+    <p>Are You sure you want to delete " {{item}}"</p>
+
+    <form action="{% url 'accounts:delete_order' item.id%}" method="post">
+      {% csrf_token%}
+      <a class="btn btn-warning" href="{% url 'accounts:home'%}">Cancel</a>
+      <input class="btn btn-danger" type="submit" name="Confirm" value="Confirm">
+    </form>
+
+  </div>
+</div>
+</div>
+  {% endblock content%}

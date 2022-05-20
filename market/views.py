@@ -1,16 +1,14 @@
 from django.shortcuts import render
-
+from .models import Item
+from.forms import ItemForm
 
 def index(request):
-    return render(request, 'market/index.html')
-
-
-
-def product2(request: str):
-    context = {
-        
+    all_items = Item.objects.all()
+  
+    context ={
+        'items':all_items,
     }
-    return render(request, 'market/product.html', context)
+    return render(request, 'market/index.html', context)
 
 
 def product(request: str, prod_id: str):
@@ -20,9 +18,12 @@ def product(request: str, prod_id: str):
     return render(request, 'market/product.html', context)
 
 
-
-
 def products(request):
-    return render(request, 'market/products.html')
+    all_items = Item.objects.all()
+  
+    context ={
+        'items':all_items,
+    }
+    return render(request, 'market/products.html', **context)
 
 

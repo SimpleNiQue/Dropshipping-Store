@@ -18,7 +18,7 @@ class Item(models.Model):
   name = models.CharField(max_length=200, null=True)
   price = models.CharField(max_length=200, null=True)
   category  = models.ForeignKey(Category, null=True, on_delete=models.SET_NULL)
-  item_img = models.ImageField(upload_to = "images/upload/items/")
+  item_img = models.ImageField(upload_to = "images/")
   description = models.CharField(max_length=200, null=True)
   date_created = models.DateTimeField(auto_now_add=True, null=True)
   

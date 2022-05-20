@@ -1,0 +1,64 @@
+{% load static %}
+  
+    <!-- Bootstrap core CSS -->
+<link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/bootstrap/navbar.css' %}" rel="stylesheet">
+  </head>
+  <body>
+    
+<main>
+ 
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark" aria-label="Third navbar example">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Expand at sm</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExample03">
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled">Disabled</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+            <ul class="dropdown-menu" aria-labelledby="dropdown03">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form>
+          <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </form>
+      </div>
+    </div>
+  </nav>
+
+</main>      
+ <script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
