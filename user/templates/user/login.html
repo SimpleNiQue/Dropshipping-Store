@@ -1,0 +1,64 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css'%}">
+  <link rel="stylesheet" href="{% static 'css/custom/login_style.css'%}">
+</head>
+<body>
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+				<div class="d-flex justify-content-center">
+					<h3 id="form-title">LOGIN</h3>
+				</div>
+				<div class="d-flex justify-content-center form_container">
+
+					<form method="POST" action="">
+            {% csrf_token %}
+						<div class="input-group mb-3">
+							<input type="text" name="username" id="username">
+						</div>
+
+						<div class="input-group mb-2">
+							<input type="password" name="password" id="password">
+						</div>
+              {% for msg in messages%}
+                <p style="text-align: center;">{{ msg }}</p>
+              {% endfor %}
+            <div class="d-flex justify-content-center mt-3 login_container">
+              <input onclick="validateForm()" class="btn login_btn" type="submit" value="Login">
+            </div>
+					</form>
+				</div>
+		
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						New Here? <a href="{% url 'user:register' %}" class="ml-2">Register</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+  <script src="{% static 'js/validate_login.js' %}"></script>  
+
+	<script>
+						/* Because i didnt set placeholder values in forms.py they will be set here using vanilla Javascript
+		//We start indexing at one because CSRF_token is considered and input field 
+		 */
+
+		//Query All input fields
+		var form_fields = document.getElementsByTagName('input')
+		form_fields[1].placeholder='Username..';
+		form_fields[2].placeholder='Enter password...';
+
+		for (var field in form_fields){	
+			form_fields[field].className += ' form-control'
+		}
+	</script>
+</body>
+</html>
