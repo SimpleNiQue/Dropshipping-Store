@@ -1,5 +1,6 @@
 from django.db import models
 from market.models import Item
+from django.contrib.auth.models import User
 
 class Customer(models.Model):
   user = models.OneToOneField(User, null=True, blank=True, on_delete=models.CASCADE)
@@ -8,7 +9,7 @@ class Customer(models.Model):
   email = models.CharField(max_length=200, null=True)
   profile_pic = models.ImageField(default="images/custom/person.svg", null=True, blank=True, upload_to = "images/upload/profiles/")
   date_created = models.DateTimeField(auto_now_add=True, null=True)
-  date_created = models.DateTimeField(auto_now_add=True, null=True)
+
 
   def __str__(self):
     return self.name
@@ -19,15 +20,12 @@ class Customer(models.Model):
 
 
 class Order(models.Model):
-  STATUS = (
-    ('Pending','Pending'),
-    ('Delivered','Delivered'),
-    )
+  STATUS = ("Pending", "Delivered")
     
   customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
   item = models.ForeignKey(Item, null=True, on_delete=models.SET_NULL)
   date_created = models.DateTimeField(auto_now_add=True, null=True)
-  status = models.CharField(max_length=200, null=True, choices=STATUS)
+  status = models.CharField(max_length=200, null=True)
   
   def __str__(self):
     return self.item.name
