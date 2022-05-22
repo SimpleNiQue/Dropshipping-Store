@@ -5,9 +5,7 @@ from.forms import ItemForm
 def index(request):
     all_items = Item.objects.all()
   
-    context ={
-        'items':all_items,
-    }
+    context ={'items':all_items,}
     return render(request, 'market/index.html', context)
 
 
@@ -25,5 +23,3 @@ def products(request):
         'items':all_items,
     }
     return render(request, 'market/products.html', **context)
-
-

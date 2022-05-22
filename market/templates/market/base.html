@@ -1,0 +1,35 @@
+{% load static %}
+{% load humanize %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>{% block title %}{% endblock title %}</title>
+    
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/media-query.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap/navbar-top.css' %}" rel="stylesheet">
+    <style>
+      body{
+        background-color: rgba(0, 0, 0, .85);
+      }
+    </style>
+  </head>
+  <body style="background-color:#212529;">
+
+    {% block navbar %}
+      {% include 'market/navbar.html' %}
+    {% endblock navbar %}
+
+    {% block content %}{% endblock content%}      
+
+    {% block footer %}
+      {% include 'market/footer.html' %}
+    {% endblock footer %}
+
+</body>
+<script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+</html>

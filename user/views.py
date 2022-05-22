@@ -49,3 +49,11 @@ def register(request):
         
   context = {'form':form}
   return render(request,'user/register.html', context)
+
+@login_required(login_url='accounts:login')
+@allowed_users(allowed_roles=['Customer','Admin'])
+def dashboard(request):
+    user = request.user
+  
+    context = {}
+    return render(request, 'user/dashboard.html', context)
