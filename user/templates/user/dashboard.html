@@ -1,10 +1,38 @@
-{% extends 'user/user_base.html'%}
 {% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block title %}{{ user.username|title }}-Dashboard{% endblock title %}
+  </title>
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap/bootstrap.min.css' %}" rel="stylesheet">
 
-{% block title %}{{ user.username|title }}-Dashboard{% endblock title %}
-{% block content%}
-      <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/bootstrap/dashboard.css' %}" rel="stylesheet">
+  <style>
+  #completed-orders{
+    background-color:rgb(104, 167, 104);
+  }
+
+  #pending-orders{
+    background-color:darkseagreen;
+    
+}
+
+  #total-orders{
+    background-color: grey;
+  }
+
+</style>
+
+</head>
+<body>
+  <header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
         <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="{% url 'market:home' %}" style="color:goldenrod ;"><h4> Nicks Shorts</h4></a>
         <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -12,7 +40,7 @@
         <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
         <div class="navbar-nav">
           <div class="nav-item text-nowrap">
-            <a class="nav-link px-3" href="#">Sign out</a>
+            <a class="nav-link px-3" href="{% url 'user:logout' %}">Sign out</a>
           </div>
         </div>
       </header>
@@ -43,7 +71,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="#">
                     <span data-feather="users"></span>
-                    Customers
+                    Wish List
                   </a>
                 </li>
                
@@ -60,6 +88,14 @@
                     Feedback
                   </a>
                 </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="#">
+                    <span data-feather="file-text"></span>
+                    Buy us Coffee
+                  </a>
+                </li>
+                
                 
               </ul>
             </div>
@@ -68,10 +104,11 @@
           <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
               <h1 class="h2"> Welcome {{ user.username|title }}</h1>
+
               <div class="btn-toolbar mb-2 mb-md-0">
                 <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
                   <span data-feather="calendar"></span>
-                  This week
+                  This Week
                 </button>
               </div>
             </div>
@@ -93,30 +130,36 @@
       </div>
 
       <hr>
-            <h2>Section title</h2>
+      {% block dashboard_center %}
+            <h2>Recent</h2>
             <div class="table-responsive">
               <table class="table table-striped table-sm">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
-                    <th scope="col">Header</th>
+                    <th scope="col"></th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Order Number</th>
+                    <th scope="col"></th>
+                    <th scope="col">Status</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>1,001</td>
-                    <td>random</td>
-                    <td>data</td>
-                    <td>placeholder</td>
-                    <td>text</td>
+                    <td>1</td>
+                    <td>khaki Shorts</td>
+                    <td>NGN 5,000</td>
+                    <td>44534</td>
+                    <td>4pm Yesterday</td>
+                    <td>Pending</td>
                   </tr>
                 </tbody>
               </table>
             </div>
+        {% endblock dashboard_center %}
           </main>
         </div>
       </div>
-  {% endblock content%}
+</body>
+<script src="{% static 'js/bootstrap/bootstrap.bundle.min.js' %}"></script>
+</html>

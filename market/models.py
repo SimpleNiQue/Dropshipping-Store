@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from user.models import Customer
 
 
 class Category(models.Model):
@@ -26,3 +27,18 @@ class Item(models.Model):
     return self.name
   class Meta:
     verbose_name_plural = 'Items'
+
+
+class Order(models.Model):
+  STATUS = ("Pending", "Delivered")
+    
+  customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
+  item = models.ForeignKey(Item, null=True, on_delete=models.SET_NULL)
+  date_created = models.DateTimeField(auto_now_add=True, null=True)
+  status = models.CharField(max_length=200, null=True)
+  
+  def __str__(self):
+    return self.item.name
+
+  class Meta:
+    verbose_name_plural = 'Orders'

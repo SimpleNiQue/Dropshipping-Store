@@ -1,5 +1,4 @@
 from django.db import models
-from market.models import Item
 from django.contrib.auth.models import User
 
 class Customer(models.Model):
@@ -18,17 +17,3 @@ class Customer(models.Model):
     verbose_name_plural = 'Customers'
   
 
-
-class Order(models.Model):
-  STATUS = ("Pending", "Delivered")
-    
-  customer = models.ForeignKey(Customer, null=True, on_delete=models.SET_NULL)
-  item = models.ForeignKey(Item, null=True, on_delete=models.SET_NULL)
-  date_created = models.DateTimeField(auto_now_add=True, null=True)
-  status = models.CharField(max_length=200, null=True)
-  
-  def __str__(self):
-    return self.item.name
-
-  class Meta:
-    verbose_name_plural = 'Orders'

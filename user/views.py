@@ -27,8 +27,15 @@ def login_user(request):
       return redirect('market:home')
       
     else: messages.error(request, 'Account not Registered')
+  
   return render(request, 'user/login.html')
 
+#Logout
+@login_required(login_url='user:login')
+def log_out(request):
+  logout(request)
+  print(request.user.username, 'logged out')
+  return render(request,'market/index.html')
 
 # Registers a new user
 @unauthenticated_user
