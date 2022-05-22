@@ -15,9 +15,9 @@ def customer_profile(sender, instance, created, **kwargs):
     
 post_save.connect(customer_profile, sender=User)
     
-def order(sender, instance, created, **kwargs):
+"""def order(sender, instance, created, **kwargs):
   if created:
     Order.objects.create(status='Pending')
     print("\n Order Placed!!")
 
-post_save.connect(order, sender=User)
+post_save.connect(order, sender=User)"""

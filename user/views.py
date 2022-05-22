@@ -11,12 +11,15 @@ from django.contrib import messages
 
 
 # Logs a user in
+@unauthenticated_user
 def login_user(request):
   if request.method =='POST':
     username = request.POST.get('username')
     password = request.POST.get('password')
       
+    print(username)  
     user = authenticate(request, username=username, password=password)
+    print(user)
       
     if user is not None:
       login(request, user)
@@ -25,6 +28,7 @@ def login_user(request):
       
     else: messages.error(request, 'Account not Registered')
   return render(request, 'user/login.html')
+
 
 # Registers a new user
 @unauthenticated_user
@@ -44,4 +48,4 @@ def register(request):
       messages.error(request, 'Incorrect credentials')
         
   context = {'form':form}
-  return render(request, request, 'user/register.html', context)
+  return render(request,'user/register.html', context)
