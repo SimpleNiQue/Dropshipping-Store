@@ -34,6 +34,8 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
 
     #Django Default apps
+    'django.contrib.humanize',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -118,6 +120,8 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+USE_L10N = True
+
 USE_TZ = True
 
 
@@ -145,3 +149,9 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Thousand Separator
+USE_THOUSAND_SEPARATOR = True
+THOUSAND_SEPARATOR = ', '
+DECIMAL_SEPARATOR = '.'
+NUMBER_GROUPING = 3
