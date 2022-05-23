@@ -1,0 +1,27 @@
+
+.fa,
+.fas {
+  font-family: 'FontAwesome';
+}
+
+ul li a {
+  font-size: 1.1rem;
+  color: #343a40;
+}
+
+ul li a.cart:hover {
+  text-decoration: none;
+  color: #d60e96;
+}
+
+li a.cart .cart-basket {
+  font-size: .6rem;
+  position: absolute;
+  top: -12px;
+  right: -5px;
+  width: 14px;
+  height: 14px;
+  color: #fff;
+  background-color: #418deb;
+  border-radius: 50%;
+}
