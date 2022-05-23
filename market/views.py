@@ -23,3 +23,7 @@ def products(request):
         'items':all_items,
     }
     return render(request, 'market/products.html', **context)
+
+def cart(request):
+    context = {}
+    return render(request, 'market/cart.html', context)
